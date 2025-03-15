@@ -17,7 +17,7 @@ async function getToken() {
 
 const axiosInstance = axios.create({
   baseURL: INSTANCE_URL,
-  timeout: 5000,
+  // timeout: 5000,
 });
 
 axiosInstance.interceptors.request.use(

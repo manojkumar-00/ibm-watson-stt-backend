@@ -1,10 +1,7 @@
 const express = require("express");
-const multer = require("multer");
 
-const { sttController } = require("../controllers");
-
-const upload = multer({ dest: "uploads/" });
-const modelRouter = require("./models.route");
+const modelRouter = require("./models.routes");
+const recognizeRouter = require("./recognize.routes");
 const apiRouter = express.Router();
 
 apiRouter.get("/", (_, res) => {
@@ -15,6 +12,6 @@ apiRouter.get("/", (_, res) => {
 
 apiRouter.use("/models", modelRouter);
 
-apiRouter.post("/recognize", () => {});
+apiRouter.use("/recognize", recognizeRouter);
 
 module.exports = apiRouter;
