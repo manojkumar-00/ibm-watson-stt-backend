@@ -23,6 +23,16 @@ async function recognizeAudioSynchronous(req, res) {
   }
 }
 
+async function recognizeAudioStreaming(req, res) {
+  try {
+    await stt.transcribeStreamingAudio(req, res);
+  } catch (error) {
+    console.error("STT Controller Error:", error.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+}
+
 module.exports = {
   recognizeAudioSynchronous,
+  recognizeAudioStreaming,
 };

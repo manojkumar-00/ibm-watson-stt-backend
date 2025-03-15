@@ -1,6 +1,9 @@
 const axios = require("axios");
 const { API_KEY } = require("../config/server.config");
 
+let authToken = null;
+let tokenExpiry = null;
+
 async function generateNewToken() {
   try {
     const data = new URLSearchParams({
@@ -23,4 +26,13 @@ async function generateNewToken() {
   }
 }
 
-module.exports = { generateNewToken };
+async function getToken() {
+  if (!authToken || Date.now() >= tokenExpiry) {
+    const newToken = await generateNewToken();
+    authToken = newToken.data.access_token;
+    tokenExpiry = newToken.data.expiration;
+  }
+  return authToken;
+}
+
+module.exports = { getToken };
