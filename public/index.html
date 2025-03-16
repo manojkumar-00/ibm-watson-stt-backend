@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Speech-to-Text</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <h1>Live Speech-to-Text</h1>
+
+    <button id="start">🎤 Start Recording</button>
+    <button id="stop" disabled>⏹ Stop</button>
+    <button id="clear">🧹 Clear Output</button>
+
+    <br />
+
+    <input type="file" id="audioFile" accept="audio/*" />
+    <button id="upload">📂 Upload File</button>
+
+    <div id="transcript"></div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
